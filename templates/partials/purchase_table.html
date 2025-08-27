@@ -1,0 +1,31 @@
+<table class="purchase-table">
+  <thead>
+    <tr>
+      <th>{{ _('Achats') }}</th>
+      <th>{{ _('Supplier') }}</th>
+      <th>{{ _('Total') }}</th>
+      <th>{{ _('Actions') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for purchase in purchases %}
+      <tr>
+        <td>{{ purchase.number }}</td>
+        <td>{{ purchase.supplier }}</td>
+        <td>{{ purchase.total }}</td>
+        <td>
+          <a href="{{ purchase.edit_url }}" class="btn btn-secondary">{{ _('Edit') }}</a>
+          <a href="{{ purchase.pdf_url }}" class="btn btn-secondary">{{ _('PDF') }}</a>
+          <a href="{{ purchase.email_url }}" class="btn btn-secondary">{{ _('Email') }}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">{{ _('Total') }}</td>
+      <td>{{ total }}</td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>

@@ -1,0 +1,31 @@
+<table class="invoice-table">
+  <thead>
+    <tr>
+      <th>{{ _('Ventes') }}</th>
+      <th>{{ _('Client') }}</th>
+      <th>{{ _('Total') }}</th>
+      <th>{{ _('Actions') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invoice in invoices %}
+      <tr>
+        <td>{{ invoice.number }}</td>
+        <td>{{ invoice.client }}</td>
+        <td>{{ invoice.total }}</td>
+        <td>
+          <a href="{{ invoice.edit_url }}" class="btn btn-secondary">{{ _('Edit') }}</a>
+          <a href="{{ invoice.pdf_url }}" class="btn btn-secondary">{{ _('PDF') }}</a>
+          <a href="{{ invoice.email_url }}" class="btn btn-secondary">{{ _('Email') }}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">{{ _('Total') }}</td>
+      <td>{{ total }}</td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
