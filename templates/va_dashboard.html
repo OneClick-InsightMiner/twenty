@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="tabs is-boxed">
+  <ul>
+    <li class="{% if active_tab == 'ventes' %}is-active{% endif %}">
+      <a href="?tab=ventes">Ventes</a>
+    </li>
+    <li class="{% if active_tab == 'achats' %}is-active{% endif %}">
+      <a href="?tab=achats">Achats</a>
+    </li>
+  </ul>
+</div>
+
+<div class="columns">
+  <div class="column is-three-quarters">
+    {% if active_tab == 'ventes' %}
+      {% include 'partials/invoice_table.html' %}
+    {% else %}
+      {% include 'partials/purchase_table.html' %}
+    {% endif %}
+  </div>
+  <div class="column">
+    {% include 'partials/kpi_panel.html' %}
+  </div>
+</div>
+{% endblock %}
